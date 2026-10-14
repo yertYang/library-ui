@@ -1,0 +1,77 @@
+.bottom-nav {
+  position: fixed;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  min-height: 108rpx;
+  padding-top: 8rpx;
+  border-top: 2rpx solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: none;
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 92rpx;
+  min-width: 0;
+  color: var(--color-text-muted);
+  transition: color var(--duration-switch) ease;
+}
+
+.bottom-nav__item.is-active {
+  color: var(--color-primary-dark);
+}
+
+.bottom-nav__item:active {
+  color: var(--color-primary-dark);
+}
+
+.bottom-nav__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 44rpx;
+  border-radius: 16rpx;
+  line-height: 1;
+  transition: background-color var(--duration-switch) ease, transform var(--duration-switch) var(--ease-switch);
+}
+
+.bottom-nav__mark .app-icon {
+  width: 36rpx;
+  height: 36rpx;
+  flex-basis: 36rpx;
+}
+
+.bottom-nav__item.is-active .bottom-nav__mark {
+  background: var(--color-primary-soft);
+}
+
+.bottom-nav__label {
+  margin-top: 8rpx;
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+}
+
+.bottom-nav__item.is-active .bottom-nav__label {
+  font-weight: var(--weight-bold);
+}
+
+@media (hover: hover) {
+  .bottom-nav__item:not(.is-active):hover {
+    color: var(--color-primary);
+  }
+
+  .bottom-nav__item:not(.is-active):hover .bottom-nav__mark {
+    background: var(--color-surface-hover);
+  }
+}
+.bottom-nav__item.is-pending { color: var(--color-primary-dark); }
+.bottom-nav__item.is-pending .bottom-nav__mark { background: var(--color-primary-soft); }
+.bottom-nav__item:active .bottom-nav__mark { transform: scale(0.94); }

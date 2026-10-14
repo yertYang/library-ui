@@ -1,0 +1,87 @@
+/*
+ * Application design tokens.
+ * Adjust this file to reskin every shared component and page consistently.
+ */
+page,
+body,
+#app {
+  /* Color system */
+  --color-bg: #f5f7f6;
+  --color-surface: #fff;
+  --color-surface-muted: #eef3f0;
+  --color-surface-hover: #f2f6f3;
+  --color-primary: #276d54;
+  --color-primary-dark: #1d523f;
+  --color-primary-soft: #e5f0e8;
+  --color-brand-deep: #173d31;
+  --color-brand-mid: #2f6653;
+  --color-brand-light: #547f6d;
+  --color-brand-accent: #d9b67b;
+  --color-on-brand: #fffdf8;
+  --color-on-brand-muted: rgba(255, 253, 248, 0.72);
+  --color-accent: #bb6c4d;
+  --color-accent-soft: #f6eae1;
+  --color-text: #24382e;
+  --color-text-muted: #708078;
+  --color-border: #e3eae5;
+  --color-border-strong: #b9cbbd;
+  --color-field: #f7f9f5;
+  --color-field-focus: #fff;
+  --color-placeholder: #819185;
+  --color-success: #34745d;
+  --color-success-soft: #e3f0e9;
+  --color-warning: #a45b2f;
+  --color-warning-soft: #faeadc;
+  --color-danger: #b64a47;
+  --color-danger-soft: #f8e6e3;
+
+  /* Shadows */
+  --shadow-sm: 0 3rpx 10rpx rgba(25, 53, 38, 0.035);
+  --shadow-md: 0 10rpx 28rpx rgba(25, 53, 38, 0.065);
+  --shadow-lg: 0 18rpx 42rpx rgba(25, 53, 38, 0.1);
+  --shadow-card: 0 4rpx 16rpx rgba(25, 53, 38, 0.025);
+  --shadow-focus: 0 0 0 6rpx rgba(45, 102, 83, 0.1);
+  --shadow-floating-card: 0 22rpx 60rpx rgba(31, 55, 45, 0.14);
+
+  /* Shape and spacing */
+  --radius-sm: 8rpx;
+  --radius-md: 18rpx;
+  --radius-lg: 26rpx;
+  --radius-xl: 28rpx;
+  --radius-full: 999rpx;
+  --space-xs: 8rpx;
+  --space-sm: 16rpx;
+  --space-md: 24rpx;
+  --space-lg: 32rpx;
+  --space-xl: 48rpx;
+
+  /* Action controls */
+  --button-height: 88rpx;
+  --button-height-small: 72rpx;
+  --button-min-width: 144rpx;
+  --button-min-width-small: 108rpx;
+  --button-radius: 20rpx;
+  --button-radius-small: 18rpx;
+
+  /* Typography */
+  --font-2xs: 22rpx;
+  --font-xs: 24rpx;
+  --font-sm: 24rpx;
+  --font-base: 28rpx;
+  --font-lg: 32rpx;
+  --font-xl: 40rpx;
+  --font-2xl: 48rpx;
+  --font-3xl: 56rpx;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
+  --weight-heavy: 700;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-switch: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-switch: 0.24s;
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
+}

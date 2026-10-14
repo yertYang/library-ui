@@ -1,0 +1,24 @@
+/* Component-owned resets also work when the package is used outside this app. */
+.card, .app-field, .app-field__frame, .app-field__leading, .app-field__control,
+.app-button, .app-button__spinner, .pill, .section-title,
+.page-shell, .page-header, .page-header__side, .page-content, .icon-button,
+.bottom-nav, .bottom-nav__item, .bottom-nav__mark,
+.segmented, .segmented__track, .segmented__indicator, .segmented__item, .segmented__badge,
+.list-footer, .list-footer__more, .async-state, .async-state__symbol,
+.async-state__book-page, .loading-ring, .inline-notice, .list-update, .list-update__bar {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-button, .app-field__control, .icon-button { font-family: inherit; }
+.app-field__control::placeholder { color: var(--color-placeholder); opacity: 1; }
+.icon-button { margin: 0; padding: 0; color: inherit; }
+.icon-button::after { border: 0; }
+.bottom-nav { padding-bottom: env(safe-area-inset-bottom); }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-content--arrive-0, .page-content--arrive-1 { animation: none; }
+
+  .segmented__indicator, .segmented__item, .bottom-nav__item,
+  .bottom-nav__mark, .app-button, .card, .icon-button { transition: none; }
+}
