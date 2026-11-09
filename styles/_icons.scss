@@ -68,19 +68,19 @@
 }
 
 .app-icon--search::before {
-  top: 3rpx;
-  left: 3rpx;
-  width: 22rpx;
-  height: 22rpx;
-  border: 3rpx solid currentcolor;
+  top: 8%;
+  left: 8%;
+  width: 62%;
+  height: 62%;
+  border: 2PX solid currentcolor;
   border-radius: 50%;
 }
 
 .app-icon--search::after {
-  left: 22rpx;
-  top: 22rpx;
-  width: 13rpx;
-  height: 3rpx;
+  left: 66%;
+  top: 66%;
+  width: 38%;
+  height: 2PX;
   border-radius: var(--radius-full);
   background: currentcolor;
   transform: rotate(45deg);
@@ -281,4 +281,101 @@
   border-radius: var(--radius-full);
   background: currentcolor;
   transform: rotate(45deg);
+}
+
+.app-icon--chat::before {
+  inset: 3rpx 2rpx 6rpx;
+  border: 3rpx solid currentcolor;
+  border-radius: 11rpx;
+}
+
+.app-icon--chat::after {
+  bottom: 2rpx;
+  left: 9rpx;
+  width: 9rpx;
+  height: 10rpx;
+  border-bottom: 3rpx solid currentcolor;
+  border-left: 3rpx solid currentcolor;
+  border-radius: 0 0 0 3rpx;
+  background: var(--color-surface);
+  transform: skewY(-35deg);
+}
+
+.app-icon--send::before {
+  top: 6rpx;
+  left: 9rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border-top: 3rpx solid currentcolor;
+  border-left: 3rpx solid currentcolor;
+  transform: rotate(45deg);
+}
+
+.app-icon--send::after {
+  top: 6rpx;
+  left: 16rpx;
+  width: 3rpx;
+  height: 26rpx;
+  border-radius: 3rpx;
+  background: currentcolor;
+}
+
+.app-icon--compose::before {
+  inset: 5rpx 5rpx 3rpx 3rpx;
+  border: 3rpx solid currentcolor;
+  border-radius: 7rpx;
+}
+
+.app-icon--compose::after {
+  top: 1rpx;
+  right: 6rpx;
+  width: 5rpx;
+  height: 26rpx;
+  border: 2rpx solid var(--color-surface);
+  border-radius: 2rpx;
+  background: currentcolor;
+  transform: rotate(40deg);
+}
+
+.app-icon--voice::before,
+.app-icon--voice::after,
+.app-icon__voice-bars {
+  top: 8rpx;
+  width: 4rpx;
+  height: 21rpx;
+  border-radius: 4rpx;
+  background: currentcolor;
+}
+
+.app-icon--voice::before { left: 3rpx; height: 13rpx; top: 12rpx; }
+.app-icon--voice::after { right: 3rpx; height: 13rpx; top: 12rpx; }
+.app-icon__voice-bars { position: absolute; left: 11rpx; box-shadow: 8rpx 0 currentcolor; }
+
+@media (min-width: 801px) {
+  .app-icon--send::before { top: 15%; left: 25%; width: 50%; height: 50%; border-top: 2PX solid currentcolor; border-left: 2PX solid currentcolor; }
+  .app-icon--send::after { top: 16%; left: calc(50% - 1PX); width: 2PX; height: 70%; border-radius: 2PX; }
+  .app-icon--voice::before, .app-icon--voice::after { top: 34%; width: 2PX; height: 36%; border-radius: 2PX; }
+  .app-icon--voice::before { left: 12%; }
+  .app-icon--voice::after { right: 12%; }
+  .app-icon__voice-bars { top: 16%; left: 37%; width: 2PX; height: 68%; border-radius: 2PX; box-shadow: 5PX 0 currentcolor; }
+  .app-icon--compose::before { inset: 14% 14% 9% 9%; border: 2PX solid currentcolor; border-radius: 4PX; }
+  .app-icon--compose::after { top: 2%; right: 17%; width: 3PX; height: 76%; border: 1PX solid var(--color-surface); border-radius: 2PX; }
+  .app-icon--chevron-right::before { top: 25%; right: 24%; width: 45%; height: 45%; border-bottom: 2PX solid currentcolor; border-left: 2PX solid currentcolor; border-radius: 1PX; }
+  .app-icon--chat::before { inset: 9% 6% 18%; border: 2PX solid currentcolor; border-radius: 30%; }
+  .app-icon--chat::after { bottom: 4%; left: 24%; width: 26%; height: 28%; border-bottom: 2PX solid currentcolor; border-left: 2PX solid currentcolor; border-radius: 0 0 0 2PX; }
+  .app-icon--book::before { top: 17%; left: 5%; width: 46%; height: 69%; border: 2PX solid currentcolor; border-right-width: 1PX; border-radius: 3PX 1PX 1PX 4PX; }
+  .app-icon--book::after { top: 17%; right: 5%; width: 46%; height: 69%; border: 2PX solid currentcolor; border-left-width: 1PX; border-radius: 1PX 3PX 4PX 1PX; }
+  .app-icon--tasks::before { inset: 16% 14% 6%; border: 2PX solid currentcolor; border-radius: 4PX; }
+  .app-icon--tasks::after { top: 4%; left: 31%; width: 38%; height: 22%; border: 2PX solid currentcolor; border-radius: 3PX; }
+  .app-icon--home::before { inset: 36% 18% 8%; border: 2PX solid currentcolor; border-top: 0; border-radius: 0 0 3PX 3PX; }
+  .app-icon--home::after { bottom: 8%; left: 46%; width: 9%; height: 28%; border-radius: 2PX 2PX 0 0; }
+  .app-icon__home-roof::before, .app-icon__home-roof::after { top: 35%; width: 49%; height: 2PX; }
+  .app-icon__home-roof::before { left: 10%; }
+  .app-icon__home-roof::after { right: 10%; }
+  .app-icon__search-book { top: 8%; left: 6%; width: 63%; height: 76%; border: 2PX solid currentcolor; border-right-color: transparent; border-radius: 3PX; }
+  .app-icon__search-book::before { top: 18%; left: 16%; width: 33%; height: 2PX; border-radius: 1PX; }
+  .app-icon--book-search::before { top: 37%; left: 44%; width: 42%; height: 42%; border: 2PX solid currentcolor; }
+  .app-icon--book-search::after { top: 73%; left: 77%; width: 24%; height: 2PX; border-radius: 1PX; }
+  .app-icon--user::before { top: 7%; left: 32%; width: 36%; height: 36%; border: 2PX solid currentcolor; }
+  .app-icon--user::after { top: 54%; left: 9%; width: 82%; height: 62%; border: 2PX solid currentcolor; }
 }

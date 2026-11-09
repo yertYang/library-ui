@@ -17,7 +17,7 @@ export type PageLayoutProps = PropsWithChildren<{
 
 export function PageLayout({
   title, subtitle, back = false, onBack, headerAction, footer,
-  style, className = '', appearance = 0, children
+  style, className = '', appearance, children
 }: PageLayoutProps) {
   return (
     <View
@@ -39,7 +39,7 @@ export function PageLayout({
         </View>
         <View className='page-header__side page-header__side--end'>{headerAction}</View>
       </View>
-      <View className={`page-content ${footer ? `page-content--arrive-${appearance % 2}` : ''}`}>{children}</View>
+      <View className={`page-content ${footer && appearance !== undefined ? `page-content--arrive-${appearance % 2}` : ''}`}>{children}</View>
       {footer}
     </View>
   )

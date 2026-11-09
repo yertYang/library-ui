@@ -1,7 +1,7 @@
 .card {
   min-width: 0;
-  border: 2rpx solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border: 2rpx solid transparent;
+  border-radius: var(--radius-card);
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
   transition: transform var(--duration-fast) ease, border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
@@ -12,6 +12,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+.card--padding-none { padding: 0; }
+.card--padding-normal { padding: 40rpx; }
+.card--padding-large { padding: 48rpx; }
+.card--mint { background: linear-gradient(120deg, var(--color-surface), var(--color-surface-mint)); }
+.card--sage { background: linear-gradient(120deg, var(--color-surface), var(--color-surface-sage)); }
+
 .app-field {
   display: block;
   min-width: 0;
@@ -20,27 +26,27 @@
 
 .app-field__label {
   display: block;
-  margin: 0 2rpx 10rpx;
+  margin: 0 0 12rpx;
   color: var(--color-text);
-  font-size: var(--font-xs);
-  font-weight: var(--weight-bold);
-  line-height: 1.35;
+  font-size: var(--font-control);
+  font-weight: var(--weight-medium);
+  line-height: 1.5;
 }
 
 .app-field__frame {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 90rpx;
-  padding: 6rpx;
+  min-height: 80rpx;
+  padding: 0 24rpx;
   border: 2rpx solid var(--color-border);
-  border-radius: 18rpx;
+  border-radius: var(--radius-control);
   background: var(--color-field);
   transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
 }
 
 .app-field__frame--plain {
-  padding: 6rpx 24rpx;
+  padding: 0 24rpx;
 }
 
 .app-field__frame:focus-within {
@@ -52,35 +58,66 @@
 .app-field__leading {
   display: flex;
   flex: 0 0 66rpx;
-  align-self: stretch;
+  align-self: center;
   align-items: center;
   justify-content: center;
-  min-height: 72rpx;
-  margin-right: 14rpx;
-  border-radius: 12rpx;
-  background: linear-gradient(145deg, var(--color-primary-soft), #edf4ef);
-  color: var(--color-primary-dark);
+  min-height: 36rpx;
+  padding-right: 16rpx;
+  margin-right: 16rpx;
+  border-right: 2rpx solid var(--color-border);
+  color: var(--color-text-muted);
 }
 
 .app-field__leading-text {
   font-size: var(--font-xs);
-  font-weight: var(--weight-bold);
-  letter-spacing: 1rpx;
+  font-weight: var(--weight-normal);
   line-height: 1;
 }
 
 .app-field__control {
+  display: flex;
+  align-items: center;
   flex: 1;
   min-width: 0;
-  height: 74rpx;
-  padding: 0 18rpx 0 2rpx;
+  height: 76rpx;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
   color: var(--color-text);
-  font-size: 25rpx;
-  line-height: 74rpx;
+  font-size: var(--font-control);
+  line-height: 1.5;
 }
 
 .app-field__frame--plain .app-field__control {
   padding: 0;
+}
+
+/* H5 的 Taro Input 内含原生输入框，不依赖业务页面的全局重置。 */
+.app-field__control .weui-input {
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+}
+
+.app-field__placeholder,
+.app-field__control .weui-input::placeholder { color: var(--color-placeholder); opacity: 1; }
+
+@media (hover: hover) {
+  .app-field__frame:hover:not(:focus-within) { border-color: var(--color-border-strong); }
 }
 
 .app-button {
@@ -99,7 +136,7 @@
   padding: 0 24rpx;
   border: 2rpx solid transparent;
   border-radius: var(--button-radius);
-  font-size: var(--font-sm);
+  font-size: var(--font-control);
   font-weight: var(--weight-medium);
   letter-spacing: 0.5rpx;
   line-height: var(--button-height);
@@ -116,6 +153,8 @@
 
 .app-button::after { border: 0; }
 
+.app-button > .app-icon { width: 1.2em; height: 1.2em; flex: 0 0 1.2em; }
+
 .app-button__label {
   overflow: hidden;
   max-width: 100%;
@@ -123,6 +162,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.app-button--block > .app-button__label:not(:last-child) { flex: 1; text-align: left; }
 
 /* Loading indicator inherits the button's text color (currentColor), which is
    always chosen to contrast with the button background — so the spinner never
@@ -144,7 +185,7 @@
   padding: 0 16rpx;
   gap: var(--space-xs);
   border-radius: var(--button-radius-small);
-  font-size: var(--font-xs);
+  font-size: var(--font-control-small);
   line-height: var(--button-height-small);
 }
 
@@ -161,20 +202,21 @@
 }
 
 .app-button.app-button--primary {
-  background: linear-gradient(135deg, #2b775a, var(--color-primary-dark));
-  color: #fffdf8;
-  box-shadow: 0 9rpx 20rpx rgba(29, 82, 63, 0.18);
+  border-color: var(--button-primary-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: none;
 }
 
 .app-button.app-button--secondary {
   border: 2rpx solid var(--color-border-strong);
   background: var(--color-surface);
-  color: var(--color-primary-dark);
-  box-shadow: 0 3rpx 10rpx rgba(29, 55, 42, 0.05);
+  color: var(--color-primary);
+  box-shadow: none;
 }
 
 .app-button.app-button--ghost {
-  border: 2rpx solid rgba(40, 115, 91, 0.05);
+  border: 2rpx solid transparent;
   background: var(--color-primary-soft);
   color: var(--color-primary-dark);
 }
@@ -207,13 +249,17 @@
 
 .pill {
   display: inline-flex;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
-  min-height: 42rpx;
-  padding: 4rpx var(--space-sm);
-  border-radius: var(--radius-full);
+  min-height: var(--tag-height);
+  padding: 0 14rpx;
+  border: 1rpx solid transparent;
+  border-radius: var(--radius-tag);
   background: var(--color-surface-muted);
   color: var(--color-text-muted);
-  font-size: var(--font-xs);
+  font-size: var(--font-tag);
   font-weight: var(--weight-medium);
   line-height: 1.4;
   overflow-wrap: anywhere;
@@ -248,19 +294,14 @@
 }
 
 .section-title::before {
-  width: 5rpx;
-  height: 30rpx;
-  flex: 0 0 5rpx;
-  border-radius: var(--radius-full);
-  background: var(--color-brand-accent);
-  content: '';
+  content: none;
 }
 
 .section-title__text {
   flex: 1;
   min-width: 0;
-  font-family: 'Songti SC', STSong, serif;
-  font-size: 34rpx;
+  font-family: inherit;
+  font-size: var(--font-section-title);
   font-weight: var(--weight-bold);
   line-height: 1.35;
   overflow-wrap: anywhere;
@@ -281,16 +322,36 @@
   outline-offset: 4rpx;
 }
 
+@media (min-width: 801px) {
+  .card { border-width: 1PX; border-color: var(--color-border); }
+  .card--padding-normal { padding: 24PX; }
+  .card--padding-large { padding: 32PX; }
+  .app-field__frame { min-height: 48PX; padding: 0 16PX; border-width: 1PX; }
+  .app-field__control { height: 46PX; }
+  .app-field__leading { flex-basis: 40PX; min-height: 24PX; padding-right: 10PX; margin-right: 10PX; border-width: 1PX; }
+  .app-field__label { margin-bottom: 8PX; }
+  .app-button { padding: 0 20PX; border-width: 1PX; }
+  .app-button--small { padding: 0 14PX; }
+  .app-button.app-button--secondary { border-width: 1PX; }
+  .app-button__spinner { width: 16PX; height: 16PX; border-width: 2PX; }
+  .app-button--small .app-button__spinner { width: 14PX; height: 14PX; border-width: 2PX; }
+  .pill { min-height: var(--tag-height); padding: 0 8PX; border-width: 1PX; font-size: var(--font-tag); }
+  .section-title { gap: 10PX; margin: 32PX 2PX 16PX; }
+  .section-title__text { font-size: var(--font-section-title); }
+  .section-title__action { min-height: 32PX; line-height: 32PX; }
+}
+
 @media (hover: hover) {
   .app-button.app-button--primary:not([disabled]):hover {
-    background: var(--color-primary);
-    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-light);
+    box-shadow: var(--shadow-sm);
   }
 
   .app-button.app-button--secondary:not([disabled]):hover,
   .app-button.app-button--ghost:not([disabled]):hover {
     border-color: var(--color-primary);
     background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
   }
 
   .app-button.app-button--danger:not([disabled]):hover {

@@ -14,7 +14,6 @@
 .app-field__control::placeholder { color: var(--color-placeholder); opacity: 1; }
 .icon-button { margin: 0; padding: 0; color: inherit; }
 .icon-button::after { border: 0; }
-.bottom-nav { padding-bottom: env(safe-area-inset-bottom); }
 
 @media (prefers-reduced-motion: reduce) {
   .page-content--arrive-0, .page-content--arrive-1 { animation: none; }

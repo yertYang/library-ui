@@ -1,10 +1,12 @@
-import { Input, Text, View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
+import { AppInput, type AppInputProps } from './AppInput'
 
 export type AppFieldProps = {
   label: string
   leading?: string
   value: string
   placeholder?: string
+  type?: AppInputProps['type']
   password?: boolean
   maxLength?: number
   className?: string
@@ -16,6 +18,7 @@ export function AppField({
   leading,
   value,
   placeholder,
+  type,
   password = false,
   maxLength = 140,
   className = '',
@@ -30,12 +33,16 @@ export function AppField({
             <Text className='app-field__leading-text'>{leading}</Text>
           </View>
         )}
-        <Input
+        <AppInput
+          variant='plain'
           className='app-field__control'
+          aria-label={label}
           value={value}
+          type={type}
           password={password}
           maxlength={maxLength}
           placeholder={placeholder}
+          placeholderClass='app-field__placeholder'
           onInput={event => onChange(event.detail.value)}
         />
       </View>

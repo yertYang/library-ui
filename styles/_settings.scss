@@ -1,0 +1,39 @@
+.settings-list { overflow: hidden; }
+
+.settings-row {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  min-height: 118rpx;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 24rpx var(--space-lg);
+}
+
+.settings-row:not(:last-child)::after {
+  position: absolute;
+  right: var(--space-lg);
+  bottom: 0;
+  left: var(--space-lg);
+  height: 2rpx;
+  background: var(--color-border);
+  content: '';
+}
+
+.settings-row__content { flex: 1; min-width: 0; }
+.settings-row__title, .settings-row__copy { display: block; overflow-wrap: anywhere; }
+.settings-row__title { font-size: 26rpx; font-weight: var(--weight-bold); line-height: 1.5; }
+.settings-row__copy { margin-top: 6rpx; color: var(--color-text-muted); font-size: var(--font-xs); line-height: 1.6; }
+.settings-row > .app-icon { width: 30rpx; height: 30rpx; flex: 0 0 30rpx; color: var(--color-text-muted); }
+.settings-row__status { flex-shrink: 0; color: var(--color-text-muted); font-size: var(--font-xs); }
+.settings-row--danger .settings-row__title { color: var(--color-danger); }
+.settings-row.is-disabled { opacity: 0.6; }
+.settings-row--pressed { background: var(--color-surface-hover); }
+
+@media (min-width: 801px) {
+  .settings-row { min-height: 84PX; padding: 20PX 24PX; }
+  .settings-row__title { font-size: 15PX; }
+  .settings-row__copy { margin-top: 5PX; }
+  .settings-row > .app-icon { width: 18PX; height: 18PX; flex-basis: 18PX; }
+  .settings-row:not(:last-child)::after { height: 1PX; }
+}

@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   padding: 6rpx;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-control);
   background: var(--color-surface-muted);
 }
 
@@ -14,8 +14,8 @@
 
 .segmented__indicator {
   height: 100%;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
+  border-radius: var(--radius-control);
+  background: var(--color-primary);
   box-shadow: var(--shadow-sm);
   transition: transform var(--duration-switch) var(--ease-switch);
 }
@@ -30,7 +30,7 @@
   min-width: 0;
   min-height: 72rpx;
   padding: 10rpx var(--space-xs);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-tag);
   color: var(--color-text-muted);
   font-size: 25rpx;
   font-weight: var(--weight-medium);
@@ -41,14 +41,14 @@
 }
 
 .segmented__item.is-active {
-  color: var(--color-primary-dark);
+  color: var(--color-on-brand);
 }
 
 .segmented__badge {
   flex: 0 0 auto;
   min-width: 34rpx;
   padding: 2rpx var(--space-xs);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-tag);
   background: var(--color-primary-soft);
   color: var(--color-primary-dark);
   font-size: 19rpx;
@@ -65,7 +65,7 @@
     min-height: 72rpx;
     padding: 16rpx var(--space-lg);
     border: 2rpx solid var(--color-border);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--color-surface);
     color: var(--color-primary-dark);
     font-size: var(--font-sm);
@@ -84,4 +84,11 @@
     line-height: 1.6;
     text-align: center;
   }
+}
+
+@media (min-width: 801px) {
+  .segmented { padding: 4PX; }
+  .segmented__track { inset: 4PX; }
+  .segmented__item { min-height: 42PX; padding: 8PX; font-size: 15PX; }
+  .segmented__badge { min-width: 22PX; padding: 2PX 6PX; font-size: 12PX; }
 }

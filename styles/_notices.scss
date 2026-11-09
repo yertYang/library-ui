@@ -3,7 +3,7 @@
   min-width: 0;
   padding: 28rpx;
   border: 2rpx solid var(--color-border);
-  border-radius: 24rpx;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
   box-shadow: none;
 }
@@ -103,7 +103,7 @@
   height: auto;
   min-height: 80rpx;
   padding: 18rpx 24rpx;
-  border-radius: 16rpx;
+  border-radius: var(--radius-control);
   line-height: 1.5;
   white-space: normal;
   box-shadow: none;

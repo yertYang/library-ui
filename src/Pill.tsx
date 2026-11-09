@@ -1,11 +1,12 @@
 import type { PropsWithChildren } from 'react'
 import { Text } from '@tarojs/components'
 
-export type PillProps = PropsWithChildren<{ tone?: 'neutral' | 'primary' | 'success' | 'warning' | 'danger' }>
+export type PillProps = PropsWithChildren<{ tone?: 'neutral' | 'primary' | 'success' | 'warning' | 'danger'; className?: string }>
 
 export function Pill({
   children,
-  tone = 'neutral'
+  tone = 'neutral',
+  className = ''
 }: PillProps) {
-  return <Text className={`pill pill--${tone}`}>{children}</Text>
+  return <Text className={`pill pill--${tone} ${className}`.trim()}>{children}</Text>
 }

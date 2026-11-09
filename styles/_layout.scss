@@ -5,7 +5,7 @@
 }
 
 .page-shell--with-nav {
-  padding-bottom: calc(116rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(156rpx + env(safe-area-inset-bottom));
 }
 
 .page-safe-top {
@@ -43,7 +43,7 @@
 .page-header__title {
   overflow: hidden;
   max-width: 100%;
-  font-size: var(--font-lg);
+  font-size: var(--font-page-title);
   font-weight: var(--weight-heavy);
   letter-spacing: 0.4rpx;
   line-height: 1.25;
@@ -63,7 +63,7 @@
 .page-shell--root .page-header { padding-top: 12rpx; padding-bottom: 24rpx; }
 .page-shell--root .page-header__side:first-child { display: none; }
 .page-shell--root .page-header__copy { align-items: flex-start; }
-.page-shell--root .page-header__title { font-size: 42rpx; letter-spacing: 0; }
+.page-shell--root .page-header__title { font-size: var(--font-page-title); letter-spacing: 0; }
 .page-shell--root .page-header__subtitle { margin-top: 8rpx; font-size: 24rpx; }
 
 .page-content {
@@ -77,8 +77,10 @@
   justify-content: center;
   width: 72rpx;
   height: 72rpx;
-  border: 2rpx solid var(--color-border);
-  border-radius: 20rpx;
+  min-width: 44PX;
+  min-height: 44PX;
+  border: 2rpx solid transparent;
+  border-radius: var(--radius-full);
   background: var(--color-surface);
   box-shadow: none;
   transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease,
@@ -105,12 +107,20 @@
     margin-left: auto;
     border-right: 1px solid var(--color-border);
     border-left: 1px solid var(--color-border);
-    box-shadow: 0 0 60px rgba(31, 55, 45, 0.045);
+    box-shadow: 0 0 60px rgba(33, 43, 63, 0.035);
   }
 
+  .page-shell--with-nav { padding-bottom: calc(96PX + env(safe-area-inset-bottom)); }
+  .page-shell--root .page-header__title { font-size: var(--font-page-title); }
+  .page-shell--root .page-header__subtitle { margin-top: 5PX; font-size: 14PX; }
+  .page-header { min-height: 88PX; padding-bottom: 20PX; }
+  .page-header__side { flex-basis: 64PX; width: 64PX; min-height: 48PX; }
+  .icon-button { width: 44PX; height: 44PX; border-width: 1PX; }
+  .icon-button .app-icon { transform: scale(0.65); }
+
   .bottom-nav {
-    width: 100%;
-    max-width: 800px;
+    width: calc(100% - 48PX);
+    max-width: 752PX;
     margin-right: auto;
     margin-left: auto;
   }

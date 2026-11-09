@@ -6,49 +6,62 @@ page,
 body,
 #app {
   /* Color system */
-  --color-bg: #f5f7f6;
+  --color-bg: #f3f6f4;
   --color-surface: #fff;
-  --color-surface-muted: #eef3f0;
-  --color-surface-hover: #f2f6f3;
-  --color-primary: #276d54;
-  --color-primary-dark: #1d523f;
-  --color-primary-soft: #e5f0e8;
-  --color-brand-deep: #173d31;
-  --color-brand-mid: #2f6653;
-  --color-brand-light: #547f6d;
-  --color-brand-accent: #d9b67b;
-  --color-on-brand: #fffdf8;
-  --color-on-brand-muted: rgba(255, 253, 248, 0.72);
-  --color-accent: #bb6c4d;
-  --color-accent-soft: #f6eae1;
-  --color-text: #24382e;
-  --color-text-muted: #708078;
-  --color-border: #e3eae5;
-  --color-border-strong: #b9cbbd;
-  --color-field: #f7f9f5;
+  --color-surface-muted: #eef3ef;
+  --color-surface-hover: #f7f9f8;
+  --color-surface-mint: #eef8f4;
+  --color-surface-sage: #f2f7e9;
+  --color-primary: #285f4b;
+  --color-primary-dark: #204e3d;
+  --color-primary-soft: #e9f2ed;
+  --color-brand-deep: #23382e;
+  --color-brand-mid: #285f4b;
+  --color-brand-light: #739781;
+  --color-brand-accent: #bdd5c4;
+  --color-on-brand: #fff;
+  --color-on-brand-muted: rgba(255, 255, 255, 0.76);
+  --color-accent: #75659c;
+  --color-accent-soft: #eeebf7;
+  --color-text: #25382f;
+  --color-text-muted: #5f7065;
+  --color-border: #e2e9e4;
+  --color-border-strong: #cad9ce;
+  --color-field: #f7f9f8;
   --color-field-focus: #fff;
-  --color-placeholder: #819185;
-  --color-success: #34745d;
-  --color-success-soft: #e3f0e9;
+  --color-placeholder: #727a89;
+  --color-success: #286b60;
+  --color-success-soft: #e1f2eb;
   --color-warning: #a45b2f;
   --color-warning-soft: #faeadc;
   --color-danger: #b64a47;
   --color-danger-soft: #f8e6e3;
 
   /* Shadows */
-  --shadow-sm: 0 3rpx 10rpx rgba(25, 53, 38, 0.035);
-  --shadow-md: 0 10rpx 28rpx rgba(25, 53, 38, 0.065);
-  --shadow-lg: 0 18rpx 42rpx rgba(25, 53, 38, 0.1);
-  --shadow-card: 0 4rpx 16rpx rgba(25, 53, 38, 0.025);
-  --shadow-focus: 0 0 0 6rpx rgba(45, 102, 83, 0.1);
-  --shadow-floating-card: 0 22rpx 60rpx rgba(31, 55, 45, 0.14);
+  --shadow-sm: 0 4rpx 14rpx rgba(33, 43, 63, 0.035);
+  --shadow-md: 0 12rpx 32rpx rgba(33, 43, 63, 0.065);
+  --shadow-lg: 0 20rpx 48rpx rgba(33, 43, 63, 0.09);
+  --shadow-card: 0 6rpx 24rpx rgba(33, 43, 63, 0.025);
+  --shadow-focus: 0 0 0 6rpx rgba(40, 95, 75, 0.1);
+  --shadow-floating-card: 0 16rpx 48rpx rgba(33, 43, 63, 0.12);
 
   /* Shape and spacing */
-  --radius-sm: 8rpx;
-  --radius-md: 18rpx;
-  --radius-lg: 26rpx;
-  --radius-xl: 28rpx;
+  --radius-sm: 12rpx;
+  --radius-md: 24rpx;
+  --radius-lg: 30rpx;
+  --radius-xl: 36rpx;
   --radius-full: 999rpx;
+  --radius-control: var(--radius-md);
+  --radius-card: var(--radius-lg);
+  --radius-dialog: var(--radius-xl);
+  --radius-tag: var(--radius-sm);
+  --control-height: 80rpx;
+  --font-page-title: 40rpx;
+  --font-section-title: 32rpx;
+  --font-control: 28rpx;
+  --font-control-small: 26rpx;
+  --font-tag: 22rpx;
+  --tag-height: 48rpx;
   --space-xs: 8rpx;
   --space-sm: 16rpx;
   --space-md: 24rpx;
@@ -56,12 +69,15 @@ body,
   --space-xl: 48rpx;
 
   /* Action controls */
+  --button-primary-bg: #c7dfcf;
+  --button-primary-border: #afcdb8;
+  --button-primary-text: #214833;
   --button-height: 88rpx;
   --button-height-small: 72rpx;
   --button-min-width: 144rpx;
   --button-min-width-small: 108rpx;
-  --button-radius: 20rpx;
-  --button-radius-small: 18rpx;
+  --button-radius: var(--radius-control);
+  --button-radius-small: var(--radius-control);
 
   /* Typography */
   --font-2xs: 22rpx;
@@ -84,4 +100,55 @@ body,
   --duration-fast: 0.15s;
   --duration-base: 0.25s;
   --duration-slow: 0.4s;
+}
+
+/* H5 uses a fixed reading column on desktop; do not scale touch dimensions
+   and body copy with the full browser width. */
+@media (min-width: 801px) {
+  page, body, #app {
+    --color-bg: #f1f5f2;
+    --color-surface-muted: #f0f4f1;
+    --color-surface-hover: #f6f9f6;
+    --color-primary: #315d4e;
+    --color-primary-dark: #244b3d;
+    --color-primary-soft: #e3f0e5;
+    --color-brand-deep: #23382e;
+    --color-text: #202b25;
+    --color-text-muted: #617168;
+    --color-border: #e1e9e3;
+    --color-border-strong: #becfc3;
+    --color-field: #f7f9f7;
+    --shadow-sm: 0 2PX 6PX rgba(30, 53, 39, 0.04);
+    --shadow-md: 0 8PX 24PX rgba(30, 53, 39, 0.07);
+    --shadow-card: 0 4PX 18PX rgba(30, 53, 39, 0.035);
+    --shadow-focus: 0 0 0 3PX rgba(49, 93, 78, 0.12);
+    --radius-sm: 8PX;
+    --radius-md: 10PX;
+    --radius-lg: 16PX;
+    --radius-xl: 20PX;
+    --control-height: 40PX;
+    --font-page-title: 24PX;
+    --font-section-title: 18PX;
+    --font-control: 14PX;
+    --font-control-small: 13PX;
+    --font-tag: 12PX;
+    --tag-height: 24PX;
+    --space-xs: 6PX;
+    --space-sm: 12PX;
+    --space-md: 20PX;
+    --space-lg: 28PX;
+    --space-xl: 36PX;
+    --button-height: 42PX;
+    --button-height-small: 34PX;
+    --button-min-width: 96PX;
+    --button-min-width-small: 80PX;
+    --font-2xs: 12PX;
+    --font-xs: 13PX;
+    --font-sm: 14PX;
+    --font-base: 16PX;
+    --font-lg: 18PX;
+    --font-xl: 26PX;
+    --font-2xl: 32PX;
+    --font-3xl: 40PX;
+  }
 }

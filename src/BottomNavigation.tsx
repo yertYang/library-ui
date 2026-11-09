@@ -5,6 +5,7 @@ export interface BottomNavigationItem {
   key: string
   label: string
   icon: AppIconName
+  prominent?: boolean
 }
 
 export interface BottomNavigationProps<T extends BottomNavigationItem = BottomNavigationItem> {
@@ -19,11 +20,11 @@ export function BottomNavigation<T extends BottomNavigationItem>({
   items, active, pending, onChange
 }: BottomNavigationProps<T>) {
   return (
-    <View className='bottom-nav safe-bottom'>
+    <View className='bottom-nav'>
       {items.map(item => (
         <View
           key={item.key}
-          className={`bottom-nav__item ${active === item.key ? 'is-active' : ''} ${pending === item.key ? 'is-pending' : ''}`}
+          className={`bottom-nav__item ${item.prominent ? 'is-prominent' : ''} ${active === item.key ? 'is-active' : ''} ${pending === item.key ? 'is-pending' : ''}`}
           aria-current={active === item.key ? 'page' : undefined}
           aria-busy={pending === item.key}
           onClick={() => item.key !== active && !pending && onChange(item)}

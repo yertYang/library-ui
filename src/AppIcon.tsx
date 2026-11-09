@@ -1,6 +1,10 @@
 import { View } from '@tarojs/components'
 
 export type AppIconName =
+  | 'chat'
+  | 'voice'
+  | 'send'
+  | 'compose'
   | 'home'
   | 'search'
   | 'book-search'
@@ -27,6 +31,7 @@ export function AppIcon({
 }: AppIconProps) {
   return (
     <View className={`app-icon app-icon--${name} ${className}`} aria-hidden>
+      {name === 'voice' && <View className='app-icon__voice-bars' />}
       {name === 'home' && <View className='app-icon__home-roof' />}
       {name === 'eye-off' && <View className='app-icon__eye-slash' />}
       {name === 'book-search' && <View className='app-icon__search-book' />}

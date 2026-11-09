@@ -142,3 +142,13 @@
 @media (prefers-reduced-motion: reduce) {
   .list-update__bar { width: 100%; animation: none; }
 }
+
+.status-actions { box-sizing: border-box; display: flex; width: 100%; flex-wrap: wrap; align-items: center; gap: var(--space-xs); padding: var(--space-sm); border: 1rpx solid var(--color-border); border-radius: var(--radius-control); background: var(--color-primary-soft); }
+.status-actions__status { display: block; width: 100%; min-width: 0; color: var(--color-primary); font-size: var(--font-xs); line-height: 1.5; overflow-wrap: break-word; }
+.status-actions__buttons { display: flex; flex: 0 0 auto; align-items: center; gap: var(--space-xs); margin-left: auto; font-size: var(--font-control-small); }
+.status-actions__buttons > .app-button { min-width: 6em; }
+
+@media (min-width: 801px) {
+  .status-actions { min-height: 54PX; gap: 10PX; padding: 6PX 10PX; border-width: 1PX; }
+  .status-actions__status { width: auto; min-width: 16em; flex: 1 1 16em; }
+}

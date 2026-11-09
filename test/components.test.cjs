@@ -37,7 +37,7 @@ const render = node => expand(node)
 const byClass = (nodes, name) => flatten(nodes).find(node => node.props.className?.split(' ').includes(name))
 
 test('public entry exports the complete component set without app or style side effects', () => {
-  assert.deepEqual(Object.keys(ui).sort(), ['AppButton', 'AppField', 'AppIcon', 'AsyncState', 'BottomNavigation', 'Card', 'InlineNotice', 'ListFooter', 'PageLayout', 'Pill', 'SectionTitle', 'Segmented', 'ServiceNotice'].sort())
+  assert.deepEqual(Object.keys(ui).sort(), ['AppButton', 'AppField', 'AppIcon', 'AppInput', 'AppSearchField', 'AppSelect', 'AppTextarea', 'AsyncState', 'BottomNavigation', 'Card', 'InlineNotice', 'ListFooter', 'PageLayout', 'Pill', 'SectionTitle', 'Segmented', 'ServiceNotice', 'SettingsList', 'SettingsRow', 'StatusActions'].sort())
 })
 
 test('buttons preserve form submission and suppress clicks when loading or disabled', () => {
@@ -56,10 +56,22 @@ test('buttons preserve form submission and suppress clicks when loading or disab
   }
 })
 
+test('status actions render the current state and forward both operations', () => {
+  const calls = []
+  const tree = render(ui.StatusActions({ status: '正在录音',
+    primary: { label: '发送', onClick: () => calls.push('send') },
+    secondary: { label: '结束', onClick: () => calls.push('end') } }))
+  assert.match(text(tree), /正在录音发送结束/)
+  const buttons = flatten(tree).filter(node => node.type === 'Button')
+  buttons.forEach(button => button.props.onClick())
+  assert.deepEqual(calls, ['send', 'end'])
+})
+
 test('fields forward input values, password and length constraints', () => {
   let value
-  const tree = render(ui.AppField({ label: '名称', value: '', password: true, maxLength: 12, onChange: next => { value = next } }))
+  const tree = render(ui.AppField({ label: '名称', value: '', type: 'number', password: true, maxLength: 12, onChange: next => { value = next } }))
   const input = flatten(tree).find(node => node.type === 'Input')
+  assert.equal(input.props.type, 'number')
   assert.equal(input.props.password, true)
   assert.equal(input.props.maxlength, 12)
   input.props.onInput({ detail: { value: '新的名称' } })
