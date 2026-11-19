@@ -201,27 +201,32 @@
   min-width: 0;
 }
 
-.app-button.app-button--primary {
+/* Taro H5 applies its own foreground and fill on :active. Keep the variant pair together. */
+.app-button.app-button--primary,
+.app-button.app-button--primary:not([disabled]):active {
   border-color: var(--button-primary-border);
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   box-shadow: none;
 }
 
-.app-button.app-button--secondary {
+.app-button.app-button--secondary,
+.app-button.app-button--secondary:not([disabled]):active {
   border: 2rpx solid var(--color-border-strong);
   background: var(--color-surface);
   color: var(--color-primary);
   box-shadow: none;
 }
 
-.app-button.app-button--ghost {
+.app-button.app-button--ghost,
+.app-button.app-button--ghost:not([disabled]):active {
   border: 2rpx solid transparent;
   background: var(--color-primary-soft);
   color: var(--color-primary-dark);
 }
 
-.app-button.app-button--danger {
+.app-button.app-button--danger,
+.app-button.app-button--danger:not([disabled]):active {
   border-color: rgba(182, 74, 71, 0.18);
   background: var(--color-danger-soft);
   color: var(--color-danger);
