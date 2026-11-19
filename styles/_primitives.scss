@@ -1,6 +1,6 @@
 .card {
   min-width: 0;
-  border: 2rpx solid transparent;
+  border: 2rpx solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
@@ -8,15 +8,15 @@
 }
 
 .card--pressed {
-  transform: scale(0.97);
+  transform: scale(0.99);
   box-shadow: var(--shadow-sm);
 }
 
 .card--padding-none { padding: 0; }
 .card--padding-normal { padding: 40rpx; }
 .card--padding-large { padding: 48rpx; }
-.card--mint { background: linear-gradient(120deg, var(--color-surface), var(--color-surface-mint)); }
-.card--sage { background: linear-gradient(120deg, var(--color-surface), var(--color-surface-sage)); }
+.card--mint { background: var(--color-surface-mint); }
+.card--sage { background: var(--color-surface-sage); }
 
 .app-field {
   display: block;
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 80rpx;
+  min-height: var(--control-height);
   padding: 0 24rpx;
   border: 2rpx solid var(--color-border);
   border-radius: var(--radius-control);
@@ -79,7 +79,7 @@
   align-items: center;
   flex: 1;
   min-width: 0;
-  height: 76rpx;
+  height: calc(var(--control-height) - 4rpx);
   padding: 0;
   border: 0;
   outline: none;
@@ -326,11 +326,11 @@
   .card { border-width: 1PX; border-color: var(--color-border); }
   .card--padding-normal { padding: 24PX; }
   .card--padding-large { padding: 32PX; }
-  .app-field__frame { min-height: 48PX; padding: 0 16PX; border-width: 1PX; }
-  .app-field__control { height: 46PX; }
+  .app-field__frame { min-height: var(--control-height); padding: 0 12PX; border-width: 1PX; }
+  .app-field__control { height: calc(var(--control-height) - 2PX); }
   .app-field__leading { flex-basis: 40PX; min-height: 24PX; padding-right: 10PX; margin-right: 10PX; border-width: 1PX; }
   .app-field__label { margin-bottom: 8PX; }
-  .app-button { padding: 0 20PX; border-width: 1PX; }
+  .app-button { gap: 6PX; padding: 0 20PX; border-width: 1PX; }
   .app-button--small { padding: 0 14PX; }
   .app-button.app-button--secondary { border-width: 1PX; }
   .app-button__spinner { width: 16PX; height: 16PX; border-width: 2PX; }
@@ -343,8 +343,8 @@
 
 @media (hover: hover) {
   .app-button.app-button--primary:not([disabled]):hover {
-    border-color: var(--color-brand-light);
-    box-shadow: var(--shadow-sm);
+    border-color: var(--color-primary-dark);
+    background: var(--color-primary-dark);
   }
 
   .app-button.app-button--secondary:not([disabled]):hover,

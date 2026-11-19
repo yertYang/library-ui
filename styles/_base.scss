@@ -15,9 +15,4 @@
 .icon-button { margin: 0; padding: 0; color: inherit; }
 .icon-button::after { border: 0; }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-content--arrive-0, .page-content--arrive-1 { animation: none; }
-
-  .segmented__indicator, .segmented__item, .bottom-nav__item,
-  .bottom-nav__mark, .app-button, .card, .icon-button { transition: none; }
-}
+/* “减少动效”的覆盖规则在 _motion.scss，须排在所有组件样式之后。 */

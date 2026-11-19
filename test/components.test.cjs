@@ -37,7 +37,7 @@ const render = node => expand(node)
 const byClass = (nodes, name) => flatten(nodes).find(node => node.props.className?.split(' ').includes(name))
 
 test('public entry exports the complete component set without app or style side effects', () => {
-  assert.deepEqual(Object.keys(ui).sort(), ['AppButton', 'AppField', 'AppIcon', 'AppInput', 'AppSearchField', 'AppSelect', 'AppTextarea', 'AsyncState', 'BottomNavigation', 'Card', 'InlineNotice', 'ListFooter', 'PageLayout', 'Pill', 'SectionTitle', 'Segmented', 'ServiceNotice', 'SettingsList', 'SettingsRow', 'StatusActions'].sort())
+  assert.deepEqual(Object.keys(ui).sort(), ['AppButton', 'AppField', 'AppIcon', 'AppInput', 'AppInputGroup', 'AppSearchField', 'AppSelect', 'AppTextarea', 'AsyncState', 'BottomNavigation', 'Card', 'InlineNotice', 'ListFooter', 'MetricStrip', 'PageLayout', 'Pill', 'SectionTitle', 'Segmented', 'ServiceNotice', 'SettingsList', 'SettingsRow', 'StatusActions'].sort())
 })
 
 test('buttons preserve form submission and suppress clicks when loading or disabled', () => {

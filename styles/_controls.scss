@@ -19,15 +19,21 @@
   font-family: inherit;
   font-size: var(--font-control);
   line-height: 1.5;
+  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
 }
 
 .app-input { height: var(--control-height); }
+.app-input--small { height: var(--control-height-small); min-height: var(--control-height-small); font-size: var(--font-control-small); }
 .app-field__control.app-input { height: calc(var(--control-height) - 4rpx); }
 .app-textarea { padding: 18rpx 20rpx; }
 .app-input:focus-within, .app-textarea:focus-within { border-color: var(--color-primary); background: var(--color-field-focus); box-shadow: var(--shadow-focus); }
 
+/* 禁用态只作用于独立输入框；plain 变体的外观由外层组合控件决定。 */
+.app-input--default.is-disabled, .app-textarea--default.is-disabled { background: var(--color-surface-muted); color: var(--color-text-muted); cursor: not-allowed; }
+
 .app-input .weui-input,
-.app-textarea .weui-textarea {
+.app-textarea .weui-textarea,
+.app-textarea .taro-textarea {
   appearance: none;
   box-sizing: border-box;
   width: 100%;
@@ -45,14 +51,35 @@
 }
 
 .app-input .weui-input { line-height: normal; }
+.app-textarea .taro-textarea { resize: none; }
+.app-input.is-disabled .weui-input { cursor: not-allowed; }
 .app-input--plain, .app-textarea--plain { min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .app-input--plain:focus-within, .app-textarea--plain:focus-within { background: transparent; box-shadow: none; }
+
+.app-input-group {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--control-height);
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 6rpx 8rpx 6rpx 20rpx;
+  border: 2rpx solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-field);
+  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.app-input-group:focus-within { border-color: var(--color-primary); background: var(--color-field-focus); box-shadow: var(--shadow-focus); }
+.app-input-group > .app-input--plain { width: 0; height: var(--control-height-small); min-width: 0; flex: 1; }
+.app-input-group__trailing { display: flex; flex: 0 0 auto; align-items: center; color: var(--color-text-muted); font-size: var(--font-control-small); }
 
 .app-search-field {
   display: flex;
   box-sizing: border-box;
   min-width: 0;
-  min-height: calc(var(--control-height) + 12rpx);
+  min-height: var(--control-height);
   align-items: center;
   gap: 16rpx;
   padding: 6rpx 8rpx 6rpx 20rpx;
@@ -64,15 +91,18 @@
 
 .app-search-field:focus-within { border-color: var(--color-primary); box-shadow: var(--shadow-focus); }
 .app-search-field > .app-icon { width: 32rpx; height: 32rpx; flex: 0 0 32rpx; color: var(--color-text-muted); }
-.app-search-field > .app-input { width: 0; min-width: 0; flex: 1; padding: 0; }
-.app-search-field .app-search-field__clear { min-width: 0; padding: 0 8rpx; }
+.app-search-field > .app-input { width: 0; height: var(--control-height-small); min-width: 0; flex: 1; padding: 0; }
+.app-search-field .app-search-field__clear { min-width: 0; padding: 0 8rpx; background: transparent; color: var(--color-text-muted); }
 
 .app-select { position: relative; min-width: 0; }
 .app-select.is-open { z-index: 80; }
 .app-select__backdrop { position: fixed; z-index: 1; inset: 0; background: transparent; }
-.app-select__trigger { position: relative; z-index: 2; display: flex; box-sizing: border-box; min-width: 0; min-height: var(--control-height); align-items: center; gap: 12rpx; padding: 0 20rpx; border: 2rpx solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); color: var(--color-text); cursor: pointer; user-select: none; }
+.app-select__trigger { position: relative; z-index: 2; display: flex; box-sizing: border-box; min-width: 0; min-height: var(--control-height); align-items: center; gap: 12rpx; padding: 0 20rpx; border: 2rpx solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); color: var(--color-text); cursor: pointer; user-select: none; transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease; }
+.app-select__trigger:focus-visible { outline: 3rpx solid var(--color-primary); outline-offset: 4rpx; }
+.app-select.is-open .app-select__trigger { border-color: var(--color-primary); box-shadow: var(--shadow-focus); }
 .app-select__value { min-width: 0; flex: 1; overflow: hidden; font-size: var(--font-control); font-weight: var(--weight-normal); text-overflow: ellipsis; white-space: nowrap; }
 .app-select__arrow { flex: 0 0 auto; color: var(--color-text-muted); font-size: var(--font-control); }
+.app-select.is-open .app-select__arrow { transform: rotate(180deg); }
 .app-select__mark { display: flex; width: 44rpx; height: 44rpx; flex: 0 0 44rpx; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: var(--color-primary-soft); color: var(--color-primary); font-size: var(--font-control-small); }
 .app-select__menu { position: absolute; z-index: 3; top: calc(100% + 8rpx); left: 0; box-sizing: border-box; width: max-content; min-width: 100%; max-width: min(620rpx, calc(100vw - 40rpx)); max-height: 440rpx; overflow-y: auto; padding: 8rpx; border: 2rpx solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); box-shadow: var(--shadow-lg); }
 .app-select__option { display: flex; align-items: center; gap: 16rpx; min-height: 68rpx; padding: 12rpx 16rpx; border-radius: var(--radius-sm); color: var(--color-text); cursor: pointer; }
@@ -83,15 +113,33 @@
 .app-select__option > view:first-child text:first-child { overflow: hidden; font-size: var(--font-control); text-overflow: ellipsis; white-space: nowrap; }
 .app-select__option > view:first-child text:last-child:not(:first-child) { margin-top: 4rpx; color: var(--color-text-muted); font-size: var(--font-control-small); }
 .app-select__check { flex: 0 0 auto; color: var(--color-primary); font-size: var(--font-control); }
-.app-select.is-disabled { opacity: 0.55; }
+.app-select.is-disabled { opacity: 0.55; cursor: not-allowed; }
+.app-select.is-disabled .app-select__trigger { pointer-events: none; }
+
+/* 悬停反馈只在支持鼠标的设备启用；触屏沿用聚焦、展开与按压状态。 */
+@media (hover: hover) {
+  .app-input:hover:not(:focus-within),
+  .app-textarea:hover:not(:focus-within),
+  .app-search-field:hover:not(:focus-within),
+  .app-input-group:hover:not(:focus-within),
+  .app-select__trigger:hover { border-color: var(--color-border-strong); }
+
+  .app-input--plain:hover { border-color: transparent; }
+
+  .app-input.is-disabled:hover,
+  .app-textarea.is-disabled:hover { border-color: var(--color-border); }
+
+  .app-select__option:not(.is-selected):hover { background: var(--color-surface-hover); }
+}
 
 @media (min-width: 801px) {
   .app-input, .app-textarea { padding-right: 12PX; padding-left: 12PX; border-width: 1PX; }
-  .app-input--plain, .app-textarea--plain { padding: 0; border-width: 0; }
+  .app-input-group { padding: 3PX 4PX 3PX 12PX; border-width: 1PX; }
   .app-textarea { padding-top: 10PX; padding-bottom: 10PX; }
+  .app-input--plain, .app-textarea--plain { padding: 0; border-width: 0; }
   .app-field__frame { min-height: var(--control-height); padding: 0 12PX; border-width: 1PX; }
   .app-field__control.app-input { height: calc(var(--control-height) - 2PX); font-size: var(--font-control); }
-  .app-search-field { min-height: 48PX; gap: 10PX; padding: 4PX 6PX 4PX 14PX; border-width: 1PX; }
+  .app-search-field { min-height: var(--control-height); gap: 10PX; padding: 3PX 4PX 3PX 12PX; border-width: 1PX; }
   .app-search-field > .app-icon { width: 18PX; height: 18PX; flex-basis: 18PX; }
   .app-search-field .app-search-field__clear { padding: 0 6PX; }
   .app-select__trigger { gap: 8PX; padding: 0 12PX; border-width: 1PX; }

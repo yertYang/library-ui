@@ -69,7 +69,7 @@ export function AppSelect({
         {leadingMark && <View className='app-select__mark'>{leadingMark}</View>}
         {eyebrow && <Text className='app-select__eyebrow'>{eyebrow}</Text>}
         <Text className='app-select__value'>{triggerLabel || selected?.label || placeholder}</Text>
-        <Text className='app-select__arrow'>{open ? '⌃' : '⌄'}</Text>
+        <Text className='app-select__arrow' aria-hidden>⌄</Text>
       </View>
       {open && (
         <View className='app-select__menu'>

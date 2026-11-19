@@ -1,0 +1,29 @@
+/* 栏目切换只改变透明度，避免移动文字、创建固定定位的新坐标系。 */
+@keyframes ui-content-enter {
+  from { opacity: .82; }
+  to { opacity: 1; }
+}
+
+@keyframes ui-popup-enter {
+  from { opacity: .7; transform: translateY(-3PX); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-content-enter { animation: ui-content-enter var(--duration-fast) var(--ease-out); }
+  .app-select__menu { animation: ui-popup-enter var(--duration-fast) var(--ease-out); }
+  .app-select__arrow { transition: transform var(--duration-fast) var(--ease-switch); }
+}
+
+/* 必须最后加载：与各组件的过渡、入场动画同优先级，靠源码顺序覆盖。 */
+@media (prefers-reduced-motion: reduce) {
+  .app-button__spinner, .loading-ring { animation: none; }
+  .card { animation: none; opacity: 1; }
+  .taro-model__btn { transition: none; }
+
+  .page-content--arrive-0, .page-content--arrive-1 { animation: none; }
+
+  .segmented__indicator, .segmented__item, .bottom-nav__item, .bottom-nav__mark,
+  .app-button, .card, .icon-button, .list-footer__more,
+  .app-input, .app-textarea, .app-input-group, .app-field__frame, .app-search-field, .app-select__trigger { transition: none; }
+}

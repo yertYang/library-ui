@@ -119,3 +119,15 @@
   background: var(--color-primary-dark);
   color: var(--color-on-brand);
 }
+
+/* 桌面端 1rpx 等于 1px，这里改用固定像素，避免提示卡片放大为手机的两倍。 */
+@media (min-width: 801px) {
+  .service-notice { padding: 20PX; border-width: 1PX; }
+  .service-notice__header { gap: 12PX; }
+  .service-notice__mark { flex-basis: 40PX; width: 40PX; height: 40PX; border-width: 1PX; }
+  .service-notice__mark .app-icon { transform: scale(0.6); }
+  .service-notice__title { font-size: var(--font-base); }
+  .service-notice__description { margin-top: 10PX; }
+  .service-notice__actions { gap: 10PX; margin-top: 16PX; }
+  .service-notice__actions .app-button { min-height: var(--button-height); padding: 8PX 20PX; }
+}

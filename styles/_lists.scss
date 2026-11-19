@@ -15,7 +15,8 @@
 .segmented__indicator {
   height: 100%;
   border-radius: var(--radius-control);
-  background: var(--color-primary);
+  border: 1PX solid var(--color-border);
+  background: var(--color-surface);
   box-shadow: var(--shadow-sm);
   transition: transform var(--duration-switch) var(--ease-switch);
 }
@@ -41,7 +42,8 @@
 }
 
 .segmented__item.is-active {
-  color: var(--color-on-brand);
+  color: var(--color-primary-dark);
+  font-weight: var(--weight-bold);
 }
 
 .segmented__badge {
@@ -72,6 +74,8 @@
     font-weight: var(--weight-medium);
     line-height: 1.5;
     text-align: center;
+    cursor: pointer;
+    transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease;
 
     &.is-loading {
       opacity: 0.6;
@@ -86,9 +90,35 @@
   }
 }
 
+@media (hover: hover) {
+  .list-footer__more:hover { border-color: var(--color-border-strong); background: var(--color-surface-hover); }
+}
+
 @media (min-width: 801px) {
+  .list-footer__more { min-width: 144PX; min-height: var(--button-height-small); padding: 5PX 20PX; border-width: 1PX; }
   .segmented { padding: 4PX; }
   .segmented__track { inset: 4PX; }
   .segmented__item { min-height: 42PX; padding: 8PX; font-size: 15PX; }
   .segmented__badge { min-width: 22PX; padding: 2PX 6PX; font-size: 12PX; }
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 265rpx), 1fr));
+  gap: 1PX;
+  overflow: hidden;
+  border: 1PX solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-border);
+}
+
+.metric-strip__item { min-width: 0; padding: var(--space-md); background: var(--color-surface); overflow-wrap: anywhere; }
+.metric-strip__label { display: block; color: var(--color-text); font-size: var(--font-sm); font-weight: var(--weight-medium); }
+.metric-strip__reading { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-xs); margin: var(--space-xs) 0; }
+.metric-strip__value { min-width: 0; color: var(--color-primary-dark); font-size: var(--font-3xl); font-weight: var(--weight-medium); font-variant-numeric: tabular-nums; line-height: 1.15; }
+.metric-strip__unit, .metric-strip__detail { color: var(--color-text-muted); font-size: var(--font-xs); line-height: 1.5; }
+
+@media (min-width: 801px) {
+  .metric-strip { grid-template-columns: repeat(auto-fit, minmax(min(100%, 170PX), 1fr)); }
+  .metric-strip__item { padding: var(--space-lg); }
 }

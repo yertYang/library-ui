@@ -19,7 +19,7 @@ export function AppSearchField({ value, placeholder = '搜索', maxLength = 80, 
       <AppIcon name='search' />
       <AppInput variant='plain' value={value} maxlength={maxLength} placeholder={placeholder} aria-label={placeholder} confirmType='search' onInput={event => onChange(event.detail.value)} onConfirm={onSearch} />
       {value && <AppButton className='app-search-field__clear' size='small' variant='ghost' onClick={() => { onChange(''); onClear?.() }}>清空</AppButton>}
-      <AppButton size='small' variant='secondary' onClick={onSearch}>搜索</AppButton>
+      <AppButton size='small' variant='ghost' onClick={onSearch}>搜索</AppButton>
     </View>
   )
 }

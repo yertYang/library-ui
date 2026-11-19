@@ -1,5 +1,6 @@
 /* stylelint-disable at-rule-no-unknown */
 @use './theme';
+@use './foundation';
 @use './base';
 @use './layout';
 @use './icons';
@@ -10,4 +11,6 @@
 @use './feedback';
 @use './lists';
 @use './settings';
+@use './native';
+@use './motion';
 /* stylelint-enable at-rule-no-unknown */

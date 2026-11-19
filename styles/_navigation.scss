@@ -7,10 +7,10 @@
   display: flex;
   min-height: 108rpx;
   padding: 8rpx 8rpx 6rpx;
-  border: 2rpx solid var(--color-surface);
+  border: 2rpx solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--color-surface);
-  box-shadow: var(--shadow-floating-card);
+  box-shadow: var(--shadow-sm);
 }
 
 .bottom-nav__item {
